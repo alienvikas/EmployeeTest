@@ -1,0 +1,77 @@
+﻿@model EmployeeModel
+@{
+    using (Html.BeginForm())
+    {
+        <div class="container-fluid">
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-3">
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.LabelFor(m => m.FirstName, new { @class = "form-label d-flex" })
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @id = "txt-firstName" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "d-flex text-danger" })
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(m => m.MiddleName, new { @class = "form-label d-flex" })
+                    @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control", @id = "txt-middleName" })
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(m => m.LastName, new { @class = "form-label d-flex" })
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @id = "txt-lastNameName" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "d-flex text-danger" })
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(m => m.EmployeeId, new { @class = "form-label d-flex" })
+                    @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @id = "txt-empId" })
+                    @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "d-flex text-danger" })
+                </div>
+            </div>
+            <div class="py-2"></div>
+            <div class="row">
+                <div class="col-3">
+                    @Html.LabelFor(m => m.Address, new { @class = "form-label d-flex" })
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @id = "txt-address" })
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "d-flex text-danger" })
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(m => m.DateOfBirth, new { @class = "form-label d-flex" })
+                    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @type = "date", @id = "txt-dateOfBirth" })
+                    @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "d-flex text-danger" })
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(m => m.Salary, new { @class = "form-label d-flex" })
+                    @Html.TextBoxFor(m => m.Salary, new { @class = "form-control", @id = "txt-salary" })
+                    @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "d-flex text-danger" })
+                </div>
+            </div>
+            <div class="py-1"></div>
+            <div class="row">
+                <div class="col-3 d-flex">
+                    <input type="button" value="Submit" class="btn btn-primary" onclick="onSubmit()" />
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@* <script type="text/javascript">
+    function onSubmit() {
+        var form = $("Form");
+        if (form.valid()) {
+            debugger
+            $.ajax({
+                url: '/Employee/Create',
+                data: form.serialize(),
+                type: 'POST',
+                dataType: 'HTML',
+                success: function (data) {
+                    $("#employee-table").html(data);
+                    form.trigger("reset");
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+    }
+</script> *@
